@@ -16,12 +16,36 @@ public class Album implements Comparable<Album> {
         this.numberOfSongs = numberOfSongs;
     }
 
-    public int getID() {
+    public int getID(){
         return numericalID;
     }
 
-    public void setID(int id){
-        this.ID = id;
+    public void setID (int id){
+        this.numericalID = id;
+    }
+
+    public ArrayList<String> getName(){
+        return artistNames;
+    }
+
+    public void setName(ArrayList<String> name){
+        this.artistNames = name;
+    }
+
+    public String getTitle(){
+        return title;
+    }
+
+    public void setTitle(String title){
+        this.title = title;
+    }
+
+    public int getNumSong(){
+        return numberOfSongs;
+    }
+
+    public void setNumSong(int num){
+        this.numberOfSongs = num;
     }
     @Override
     public String toString() {

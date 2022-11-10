@@ -70,19 +70,67 @@ public class DoublyLinkedList <T extends Comparable<T>> {
 
 
     public int getIndex(Album album) {
-    Node pointer = this.head;
-    int count = 0;
-    while(pointer != null){
-        if(pointer.album.getID() == album.getID())
-    }
-
+            Node pointer = this.head;
+            int count = 0;
+            while(pointer != null){
+                if(pointer.album.getID() == album.getID() &&
+                        pointer.album.getTitle().equals(album.getTitle()) &&
+                        pointer.album.getNumSong() == album.getNumSong() &&
+                        pointer.album.getName().equals(album.getName())){
+                    return count;
+                }else{
+                    pointer = pointer.next;
+                    count++;
+                }
+            }
+            //return -1 if it isn't in the list
+            return -1;
     }
 
 
     public Node insert(int location, Album album) throws IllegalArgumentException{
+            Node node = new Node(album);
+                if (location > numNode || location < 0) {
+                    throw new IllegalArgumentException("Location is out of the bounds of the list\n");
+                }
+                // add to the end of the list
+                else if (location == numNode) {
+                    append(album);
+                } else {
+                    // nothing in the list, start the list
+                    if (location == 0 && numNode == 0) {
+                        this.head = node;
+                        this.tail = node;
+                        numNode++;
+                    }
+                    // add node to the head of the list
+                    else if (location == 0 && numNode != 0) {
+                        this.head.previous = node;
+                        node.next = this.head;
+                        this.head = node;
+                        numNode++;
+                    }
+                    // add to the middle of the list
+                    else if (location < numNode && numNode != 0) {
+                        int count = 1;
+                        Node pre_node = this.head;
+                        Node after_node = this.head.next;
+                        while (count < location) {
+                            pre_node = after_node;
+                            after_node = after_node.next;
+                        }
+                        pre_node.next = node;
+                        pre_node.next.previous = pre_node;
+                        pre_node.next.next = after_node;
+                        pre_node.next.next.previous = node;
+                        numNode++;
+                    }
+                }
+            //return the inserted node
+            return node;
+        }
 
 
-    }
 
 
     public Node shuffle() {
