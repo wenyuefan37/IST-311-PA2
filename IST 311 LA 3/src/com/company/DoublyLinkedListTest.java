@@ -42,10 +42,32 @@ class DoublyLinkedListTest {
 
 
     @Test
-    void testDelete() {
-
-
-    }
+    void testDelete(){
+            DoublyLinkedList dl = new DoublyLinkedList();
+            ArrayList<String> list = new ArrayList<>();
+            list.add("mona");
+            list.add("mona Fan");
+            Album a1 = new Album(1,list,"a",1);
+            Album a2 = new Album(2,list,"b",3);
+            Album a3 = new Album(3,list,"c",6);
+            Album a4 = new Album(4,list,"d",7);
+            //delete when the list only contains one node
+            dl.append(a1);
+            assertEquals(a1,dl.delete(0).album);
+            //delete head
+            dl.append(a1);
+            dl.append(a2);
+            dl.append(a3);
+            dl.append(a4);
+            assertEquals(a1,dl.delete(0).album);
+            //delete tail
+            assertEquals(a4,dl.delete(2).album);
+            //delete middle
+            dl.append(a4);
+            assertEquals(a3,dl.delete(1).album);
+            //when the insert position is out of bounce
+            dl.delete(5);
+        }
 
 
     @Test
