@@ -170,7 +170,18 @@ public class DoublyLinkedList <T extends Comparable<T>> {
 
 
     public DoublyLinkedList<Album> partition(Node album) {
-        
+        DoublyLinkedList<Album> newList = new DoublyLinkedList<Album>();
+            Node pointer = new Node(null);
+            pointer = this.head;
+            while(pointer != null){
+                if(pointer.album.compareTo(album.album) >= 0){
+                    newList.append(pointer.album);
+                }
+                pointer = pointer.next;
+            }
+            return newList;
+        }
+
 
     @Override
     public String toString() {
