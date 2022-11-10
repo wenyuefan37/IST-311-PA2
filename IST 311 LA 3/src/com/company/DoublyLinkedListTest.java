@@ -70,10 +70,9 @@ class DoublyLinkedListTest {
             //insert at middle
             assertEquals(a4,dl.insert(1,a4).album);
             System.out.println(dl.toString());
-            //when the insert position is out of bounce
-            dl.insert(5,a1);
+
         }
-        
+
 
 
     @Test
