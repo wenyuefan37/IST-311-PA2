@@ -109,16 +109,66 @@ class DoublyLinkedListTest {
 
     @Test
     void testShuffle() {
+            DoublyLinkedList dl = new DoublyLinkedList();
+            DoublyLinkedList dl2 = new DoublyLinkedList();
+            ArrayList<String> list = new ArrayList<>();
+            list.add("Mona");
+            list.add("Mona Fan");
+            Album a1 = new Album(1,list,"a",1);
+            Album a2 = new Album(2,list,"b",3);
+            Album a3 = new Album(3,list,"c",6);
+            Album a4 = new Album(4,list,"d",7);
+            //when the number of node is odd
+            dl.append(a1);
+            dl.append(a2);
+            dl.append(a3);
+            dl.append(a4);
+            Node pointer = dl.shuffle();
 
-    }
+            while(pointer.next != null){
+                System.out.println(pointer.album);
+                pointer = pointer.next;
+            }
+            System.out.println(pointer.album);
+
+            System.out.println(dl.toString());
+            //assertEquals(a2,dl.shuffle().);
+            System.out.println(dl.shuffle());
+
+            //when the number of node is even
+            dl.append(a1);
+            dl.append(a2);
+            dl.append(a3);
+            dl.append(a4);
+        }
 
 
     @Test
     void testPartition() {
+            DoublyLinkedList dl = new DoublyLinkedList();
+            DoublyLinkedList dl2 = new DoublyLinkedList();
+            ArrayList<String> list = new ArrayList<>();
+            list.add("Mona");
+            list.add("MOna Fan");
+            Album a1 = new Album(1,list,"a",1);
+            Album a2 = new Album(2,list,"b",3);
+            Album a3 = new Album(3,list,"c",6);
+            Album a4 = new Album(4,list,"d",7);
+            dl.append(a1);
+            dl.append(a2);
+            dl.append(a3);
+            dl.append(a4);
+            dl2.append(a2);
+            dl2.append(a3);
+            dl2.append(a4);
+            Node n1 = new Node(a2);
+            assertEquals(dl2.toString(),dl.partition(n1).toString());
+            System.out.println(dl2);
+        }
 
 
 
-    }
+
 
     @Test
     void testtoString() {

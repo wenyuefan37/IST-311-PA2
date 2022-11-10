@@ -9,6 +9,7 @@ public class Album implements Comparable<Album> {
     private String title;
     protected int numberOfSongs;
 
+    public Album(){}
     public Album(int numericalID, ArrayList<String> artistNames, String title, int numberOfSongs) {
         this.numericalID = numericalID;
         this.artistNames = artistNames;
