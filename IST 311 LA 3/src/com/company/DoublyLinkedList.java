@@ -134,16 +134,43 @@ public class DoublyLinkedList <T extends Comparable<T>> {
 
 
     public Node shuffle() {
-
-
+        DoublyLinkedList oddList = new DoublyLinkedList();
+        DoublyLinkedList evenList = new DoublyLinkedList();
+        Node pointer = new Node(null);
+        pointer = this.head;
+        int count = 0;
+        while(pointer != null){
+            if(count%2 == 0){
+                evenList.append(pointer.album);
+            }
+            else{
+                oddList.append(pointer.album);
+            }
+            count++;
+            pointer = pointer.next;
+        }
+        Node pointer1 = new Node(null);
+        Node pointer2 = new Node(null);
+        pointer1 = oddList.head;
+        pointer2 = evenList.head;
+        DoublyLinkedList result = new DoublyLinkedList();
+        while(pointer1 != null){
+            result.append(pointer1.album);
+            result.append(pointer2.album);
+            pointer1 = pointer1.next;
+            pointer2 = pointer2.next;
+        }
+        if(pointer2 != null){
+            result.append(pointer2.album);
+        }
+        //Return the head of a shuffled list
+        return result.head;
     }
 
 
-    public DoublyLinkedList<Album> partition(Album album) {
 
-
-    }
-
+    public DoublyLinkedList<Album> partition(Node album) {
+        
 
     @Override
     public String toString() {
