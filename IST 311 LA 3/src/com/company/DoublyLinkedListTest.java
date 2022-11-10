@@ -36,9 +36,21 @@ class DoublyLinkedListTest {
 
     @Test
     void testGetIndex() {
-
-
-    }
+            DoublyLinkedList dl = new DoublyLinkedList();
+            ArrayList<String> list = new ArrayList<>();
+            list.add("Mona");
+            list.add("Mona Fan");
+            Album a1 = new Album(1,list,"a",1);
+            Album a2 = new Album(2,list,"b",3);
+            Album a3 = new Album(3,list,"c",6);
+            Album a4 = new Album(4,list,"d",7);
+            dl.append(a1);
+            dl.append(a2);
+            dl.append(a3);
+            assertEquals(0,dl.getIndex(a1));
+            //when the node is not in the list
+            assertEquals(-1,dl.getIndex(a4));
+        }
 
 
     @Test
@@ -65,9 +77,7 @@ class DoublyLinkedListTest {
             //delete middle
             dl.append(a4);
             assertEquals(a3,dl.delete(1).album);
-            //when the insert position is out of bounce
-            dl.delete(5);
-        }
+    }
 
 
     @Test
